@@ -124,15 +124,42 @@ predict(model.2, newdata, interval='pred')
 
 
 ## Model 3 SIM~ARM+GRIP
+### descriptive results - scatterplot
+
+```{r}
+plot(SIMS~ARM+GRIP,data=data)
+```
+
+
+
 
 ### Numerical results (cor)
+```{r}
+cor(SIMS~ARM+GRIP,data=data)
+```
 
-`
   
 ### Inferential  (Build 2-dimentional model.3)
 
+```{r}
+model.3 <- lm(SIMS~ARM+GRIP,data=data)
+summary.lm(model.3)
+```
+
+#### scatterplot with model fit
+```{r}
+plot(SIMS~ARM+GRIP,data=data)
+abline(model.3, col='red')
+```
+
+
 #### predict model.3 at target point
-  
+
+```{r}
+newdata = data.frame(ARM = 88, GRIP=94)
+predict(model.3, newdata, interval='pred')
+```
+
 
 ## Comparing nested models ANOVA Test
 
