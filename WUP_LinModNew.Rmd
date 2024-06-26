@@ -45,17 +45,41 @@ plot(SIMS~ARM,data=data)
 ```
   
 This shows that the the stronger your arm strength is the higher the sims gets
-### scatterplot
 
 ### Numerical results
+
+```{r}
+cor(SIMS~ARM,data=data)
+```
+
+  This correlation shows that because since 0.6860 is a positive it means that the higher your strength the higher the sims because if the correlation was a negative it would decrease.
 
 
 ### Inferential  (Build model.1)
 
+  
+```{r}
+model.1 <- lm(SIMS~ARM,data=data)
+summary.lm(model.1)
+```
+#### scatterplot with model fit
+```{r}
+plot(SIMS~ARM,data=data)
+abline(model.1, col='red')
+```
+
+
+This pvalue for the intercept and slope are  
+
 #### Predict at target point
 
+```{r}
+newdata = data.frame(ARM = 88, GRIP=94)
+predict(model.1, newdata, interval='pred')
+```
 
-#### scatterplot with model fit
+the sims prediction for ARM=88 is 0.7, the prediction interval is (-1.73, 3.14)
+
   
 
 ## Model 2 SIM~GRIP
