@@ -124,6 +124,17 @@ predict(model.2, newdata, interval='pred')
 
 
 ## Model 3 SIM~ARM+GRIP
+predict interval of sims given a value of 94 for grip and 88 for arm 
+
+### Numerical results
+```{r}
+
+df= data.frame(SIMS=data$SIMS,GRIP=data$GRIP, ARM=data$ARM)
+cor(df)
+```
+
+
+CORRELATION MATRIX SHOWS THAT SIMS CORRELATES WITH GRIP AND ARM ALSO THAT GRIP AND sims 
 ### descriptive results - scatterplot
 
 ```{r}
@@ -141,30 +152,63 @@ cor(SIMS~ARM+GRIP,data=data)
   
 ### Inferential  (Build 2-dimentional model.3)
 
+
 ```{r}
-model.3 <- lm(SIMS~ARM+GRIP,data=data)
+model.3 = lm(SIMS ~ ARM + GRIP, data=data)
 summary.lm(model.3)
 ```
 
-#### scatterplot with model fit
-```{r}
-plot(SIMS~ARM+GRIP,data=data)
-abline(model.3, col='red')
-```
-
+ pvalue from the F-statistics is 0.000000000000002, this means the data fits the model
+ 
+ p-value from the model parameters: intercept, coefficient of arm and cofficient of grip 
+ 
 
 #### predict model.3 at target point
 
+predict interval of sims given a value of 94 for grip and 88 for arm
+
 ```{r}
-newdata = data.frame(ARM = 88, GRIP=94)
-predict(model.3, newdata, interval='pred')
+newdata = data.frame(GRIP=94, ARM=88)
+predSIMS = predict(model.3, newdata, interval = 'pred')
+print(predSIMS)
 ```
+The predicted sims score for grip=94 , arm=88 is 0.150
+the interval prediction are (-2.13, 2.43)
+
 
 
 ## Comparing nested models ANOVA Test
 
 ### Model.1 vs Model.3
+
+```{r}
+model.1=lm(SIMS ~ ARM, data=data)
+anova(model.1, model.3)
+summary.lm(model.1)
+```
+
+  the anova shows that there is a difference in the models the pvalue is 0.000004  
+The model 2 : Sim~arm +grip is better than model 1 sims~arm because the rss is 218 and the rss in model 2 is 188
+
 ### Model.2 vs Model.3
 
+```{r}
+model.2=lm(SIMS ~ GRIP, data=data)
+anova(model.2, model.3)
+summary.lm(model.1)
+```
+
+Model SIM~ARM+GRIP is better then model sims~grip because the rss is lower(188) 
+  the pvalue is 0.000000014
+
+
 ## Informally compare Model.1 with model.2
+
+```{r}
+summary.lm(model.1)
+summary.lm(model.2)
+```
+
+model 1 sims~arm is better then model 2 sims~grip
+
 
