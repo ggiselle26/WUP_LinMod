@@ -70,6 +70,7 @@ abline(model.1, col='red')
 
 
 This p-value for the intercept and slope are  0.00000000000000022 we reject the null because its smaller then 0.05
+
 #### Predict at target point
 
 ```{r}
@@ -155,7 +156,7 @@ summary.lm(model.3)
  INTERCEPT P VALUE IS 0.000000000000002
  ARM P VALUE IS 0.00000001
  GRIP PVALUE IS 0.00004
- THEY ARE ALL LOWER THE 0.05
+ THEY ARE ALL LOWER THEN 0.05
  
  p-value 0.000000000000002 from the model parameters: intercept, coefficient of arm and COEFFICIENT  of grip 
  
