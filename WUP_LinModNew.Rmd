@@ -89,7 +89,7 @@ the sims prediction for ARM=88 is 0.7, the prediction interval is (-1.73, 3.14)
 plot(SIMS~GRIP,data=data)
 ```
 
-This shows that the more grip you have the higher the simulation is 
+This shows that the more grip STRENTH YOU HAVE IT GOES UP  WHICH MEANS THE simulation GOES UP AS WELL
 
 
 ### Numerical results 
@@ -97,6 +97,7 @@ This shows that the more grip you have the higher the simulation is
 ```{r}
 cor(SIMS~GRIP,data=data)
 ```
+
 This shows that since your grip is strong the simulation will be positive 
 
 ### Inferential  (Build model.2)
@@ -124,7 +125,6 @@ predict(model.2, newdata, interval='pred')
 
 
 ## Model 3 SIM~ARM+GRIP
-predict interval of sims given a value of 94 for grip and 88 for arm 
 
 ### Numerical results
 ```{r}
@@ -134,21 +134,14 @@ cor(df)
 ```
 
 
-CORRELATION MATRIX SHOWS THAT SIMS CORRELATES WITH GRIP AND ARM ALSO THAT GRIP AND sims 
-### descriptive results - scatterplot
-
-```{r}
-plot(SIMS~ARM+GRIP,data=data)
-```
-
-
+CORRELATION MATRIX SHOWS THAT SIMS CORRELATES WITH GRIP AND ARM: AND GRIP CORRELATES WITH SIMS 
 
 
 ### Numerical results (cor)
 ```{r}
 cor(SIMS~ARM+GRIP,data=data)
 ```
-
+ this is the correlation between the sims score and the two variables arm and grip
   
 ### Inferential  (Build 2-dimentional model.3)
 
@@ -159,8 +152,12 @@ summary.lm(model.3)
 ```
 
  pvalue from the F-statistics is 0.000000000000002, this means the data fits the model
+ INTERCEPT P VALUE IS 0.000000000000002
+ ARM P VALUE IS 0.00000001
+ GRIP PVALUE IS 0.00004
+ THEY ARE ALL LOWER THE 0.05
  
- p-value from the model parameters: intercept, coefficient of arm and cofficient of grip 
+ p-value 0.000000000000002 from the model parameters: intercept, coefficient of arm and COEFFICIENT  of grip 
  
 
 #### predict model.3 at target point
@@ -209,6 +206,6 @@ summary.lm(model.1)
 summary.lm(model.2)
 ```
 
-model 1 sims~arm is better then model 2 sims~grip
+model 1 sims~arm is better then model 2 sims~grip because the residual for model 1 was lower than model 2
 
 
